@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1 #{title} #{bookinstance._id}
+  form(method='POST' action='')
+    div.form-group
+      label(for='book') Book:
+      select#book.form-control(type='select' name='book' required='true')
+        for book in book_list
+          if bookinstance
+            option(value=book._id selected=(bookinstance.book.toString()==book._id.toString() ? 'selected' : false)) #{book.title}
+          else
+            option(value=book._id) #{book.title}
+    div.form-group
+      label(for='imprint') Imprint:
+      input#title.form-control(type='text' name='imprint' value=(undefined===bookinstance.imprint? '' : bookinstance.imprint))  
+    div.form-group
+      label(for='status') Status:
+      select#status.form-control(type='select' name='status' required='true')
+        option(selected=(bookinstance.status === 'Maintenance' ? 'selected' : false) value='Maintenance') Maintenance
+        option(selected=(bookinstance.status === 'Avaliable' ? 'selected' : false) value='Available') Available
+        option(selected=(bookinstance.status === 'Loaned' ? 'selected' : false) value='Loaned') Loaned
+        option(selected=(bookinstance.status === 'Reserved' ? 'selected' : false) value='Reserved') Reserved  
+    button.btn.btn-primary(type='submit') Submit
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg
