@@ -20,7 +20,7 @@ Simple Library application in Express and PUG/Jade
 
 #### About
 Local Library app allows you to add, update and delete authors, books and bookinstances. 
-An author may only be deleted if there are no books that belong to that author.
-Books can only be deleted if there are no bookinstances that belong it.
+ 1. An author may only be deleted if there are no books that belong to that author.
+ 2. Books can only be deleted if there are no bookinstances that belong it.
 
 *Author: Binh Khuu
